@@ -8,10 +8,13 @@
     <title>Interface institucional para participação social digital: Um aplicativo para o Conselho Municipal de Saúde de São Paulo</title>
     <meta name="title" content="Interface institucional para participação social digital: Um aplicativo para o Conselho Municipal de Saúde de São Paulo">
     <meta name="description" content="Protótipo final do projeto realizado no trabalho de conclusão do curso de Design da Faculdade de Arquitetura e Urbanismo da USP por Davi Masayuki Hosogiri, com orientação da professora Dra. Cyntia Santos Malaguti de Sousa.">
+    <meta name="keywords" content="participação social, plataforma digital, democracia participativa, saúde pública, Conselhos de Saúde, inovação social">
+    <meta name="author" content="Davi Masayuki Hosogiri">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://davimh.github.io/cmssp-app">
+    <meta property="og:locale" content="pt_BR">
     <meta property="og:title" content="Interface institucional para participação social digital: Um aplicativo para o Conselho Municipal de Saúde de São Paulo">
     <meta property="og:description" content="Protótipo final do projeto realizado no trabalho de conclusão do curso de Design da Faculdade de Arquitetura e Urbanismo da USP por Davi Masayuki Hosogiri, com orientação da professora Dra. Cyntia Santos Malaguti de Sousa.">
     <meta property="og:image" content="https://raw.githubusercontent.com/davimh/cmssp-app/master/meta-img.png">
@@ -29,17 +32,14 @@
             display: flex;
             flex-flow: column nowrap;
             margin: 0;
-            padding: 1em;
-            height: 140vh;
+            padding: 2em;
             background-color: #FFFF50;
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 20px;
             line-height: 1.2;
         }
-        @media (max-width: 600px) {
-            body {
-                font-size: 14px;
-            }
+        body > * {
+            box-sizing: border-box;
         }
         h1 {
             color: #0087CD;
@@ -57,20 +57,66 @@
             color: #BF9D00;
             margin: 0 auto 1rem auto;
             max-width: 800px;
+            line-height: inherit;
+        }
+        svg {
+            border-radius: 100%;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .48);
+            cursor: pointer;
+            transition: all .1s ease-in;
+        }
+        svg:hover {
+            box-shadow: 0 8px 6px rgba(0, 0, 0, .24);
+            transform: translateY(-4px);
+        }
+        div {
+            height: 80vh;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
         }
         iframe {
-            flex: 1;
-            border: none;
+            height: calc(100vh - 4em);
+            border: 1px solid rgba(0, 0, 0, .08);
             background-color: rgba(0, 0, 0, .08);
-            margin-top: 2em;
+            border-radius: 1em;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            svg {
+                transform: scale(.75);
+            }
+            svg:hover {
+                box-shadow: 0 8px 6px rgba(0, 0, 0, .24);
+                transform: translateY(-4px), scale(.75);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>
-        <span>Interface institucional para participação social digital:</span>
-        Um aplicativo para o Conselho Municipal de Saúde de São Paulo</h1>
-    <p>Protótipo final do projeto realizado no trabalho de conclusão do curso de Design da Faculdade de Arquitetura e Urbanismo da USP por Davi Masayuki Hosogiri, com orientação da professora Dra. Cyntia Santos Malaguti de Sousa.</p>
-    <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fynh5llpNib98wpk8zVrKrD%2FTCC-CMS-S%25C3%25A3o-Paulo%3Fnode-id%3D32%253A32%26viewport%3D368%252C173%252C0.3328610062599182%26scaling%3Dmin-zoom&chrome=DOCUMENTATION" allowfullscreen></iframe>
+    <script type="text/javascript">
+        function scrollDown() {
+            document.body.style.overflow = "hidden";
+            window.scrollTo({
+                top: 1000,
+                left: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+    <div>
+        <h1>
+            <span>Interface institucional para participação social digital:</span>
+            Um aplicativo para o Conselho Municipal de Saúde de São Paulo</h1>
+        <p>Protótipo final do projeto realizado no trabalho de conclusão do curso de Design da Faculdade de Arquitetura e Urbanismo da USP por Davi Masayuki Hosogiri, com orientação da professora Dra. Cyntia Santos Malaguti de Sousa.</p>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="scrollDown()">
+            <path d="M28 56C12.536 56 1.49491e-07 43.464 3.33897e-07 28V28C5.18303e-07 12.536 12.536 1.49491e-07 28 3.33897e-07V3.33897e-07C43.464 5.18303e-07 56 12.536 56 28V28C56 43.464 43.464 56 28 56V56Z" fill="#0087CD"/>
+            <path d="M25.6781 12.1539L25.6781 38.2172L14.2915 26.8305C13.3815 25.9205 11.8881 25.9205 10.9781 26.8305C10.5412 27.2665 10.2957 27.8583 10.2957 28.4755C10.2957 29.0927 10.5412 29.6846 10.9781 30.1205L26.3548 45.4972C27.2648 46.4072 28.7348 46.4072 29.6448 45.4972L45.0215 30.1205C45.9315 29.2105 45.9315 27.7405 45.0215 26.8305C44.1115 25.9205 42.6415 25.9205 41.7315 26.8305L30.3448 38.2172L30.3448 12.1539C30.3448 10.8705 29.2948 9.82054 28.0115 9.82054C26.7281 9.82054 25.6781 10.8705 25.6781 12.1539Z" fill="white"/>
+        </svg>
+    </div>
+    <iframe id="desk" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fynh5llpNib98wpk8zVrKrD%2FTCC-CMS-S%25C3%25A3o-Paulo%3Fnode-id%3D32%253A32%26viewport%3D486%252C154%252C0.3328610062599182%26scaling%3Dmin-zoom&chrome=DOCUMENTATION" allowfullscreen></iframe>
 </body>
 </html>
