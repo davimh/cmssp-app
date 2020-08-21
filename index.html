@@ -33,12 +33,20 @@
             flex-flow: column nowrap;
             margin: 0;
             padding: 2em;
-            background-color: #FFFF50;
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 20px;
             line-height: 1.2;
+            overflow: hidden;
+            background-color: #A30000;
             transition: background-color ease-out .8s;
         }
+        body.top {
+            background-color: #FFFF50;
+        }
+        body.top svg#back {
+            opacity: 0;
+            transition: all ease-out .2s;
+            }
         body > * {
             box-sizing: border-box;
         }
@@ -75,13 +83,13 @@
             background-color: #FFF;
             box-shadow: 0 6px 0 #E0E0E0;
         }
-        svg {
+        svg#godown {
             border-radius: 100%;
             box-shadow: 0 4px 4px rgba(0, 0, 0, .48);
             cursor: pointer;
             transition: all .1s ease-in;
         }
-        svg:hover {
+        svg#godown:hover {
             box-shadow: 0 8px 6px rgba(0, 0, 0, .24);
             transform: translateY(-4px);
         }
@@ -91,6 +99,20 @@
             flex-flow: column nowrap;
             justify-content: center;
             align-items: center;
+        }
+        svg#back {
+            position: absolute;
+            top: calc(80vh + 4px);
+            left: 0;
+            right: 0;
+            z-index: 10;
+            width: 32px;
+            height: 32px;
+            margin: 0 auto;
+            transform: rotate(180deg);
+            opacity: 1;
+            transition: all ease-out .4s .8s;
+            cursor: pointer;
         }
         iframe {
             height: calc(100vh - 4em);
@@ -103,12 +125,16 @@
             body {
                 font-size: 14px;
             }
-            svg {
+            svg#godown {
                 transform: scale(.75);
             }
-            svg:hover {
+            svg#godown:hover {
                 box-shadow: 0 8px 6px rgba(0, 0, 0, .24);
                 transform: translateY(-4px), scale(.75);
+            }
+            svg#back {
+                width: 16px;
+                height: 16px;
             }
             #zoom-desk { display: none; }
             iframe#desk { display: none; }
@@ -116,17 +142,27 @@
         }
     </style>
 </head>
-<body>
+<body class="top">
     <script type="text/javascript">
         function scrollDown() {
-            document.body.style.overflow = "hidden";
-            document.body.style.backgroundColor = "#A30000";
+            document.body.classList.toggle('top');
             window.scrollTo({
-                top: 1000,
+                top: 10000,
                 left: 0,
                 behavior: "smooth"
             });
-        }
+        };
+        function goTop() {
+            document.body.classList.toggle('top');
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        };
+        // document.body.onload(function () {
+        //     document.getElementById('back').style.left = window.innerWidth
+        // })
     </script>
     <div>
         <h1>
@@ -134,11 +170,14 @@
             Um aplicativo para o Conselho Municipal de Saúde de São Paulo</h1>
         <p>Protótipo final do projeto realizado no <a href="https://drive.google.com/file/d/1rSPMJC8vlrHR0qp8fjKlvi8nx7asbiuR/view?usp=sharing" target="_blank">trabalho de conclusão do curso</a> de Design da Faculdade de Arquitetura e Urbanismo da USP por Davi Masayuki Hosogiri, com orientação da professora Dra. Cyntia Santos Malaguti de Sousa.</p>
         <p id="zoom-desk">Caso você não esteja vendo todo o protótipo, clique fora do celular e pressione <kbd>Z</kbd> até conseguir visualizar.</p>
-        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="scrollDown()">
+        <svg id="godown" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="scrollDown()">
             <path d="M28 56C12.536 56 1.49491e-07 43.464 3.33897e-07 28V28C5.18303e-07 12.536 12.536 1.49491e-07 28 3.33897e-07V3.33897e-07C43.464 5.18303e-07 56 12.536 56 28V28C56 43.464 43.464 56 28 56V56Z" fill="#0087CD"/>
             <path d="M25.6781 12.1539L25.6781 38.2172L14.2915 26.8305C13.3815 25.9205 11.8881 25.9205 10.9781 26.8305C10.5412 27.2665 10.2957 27.8583 10.2957 28.4755C10.2957 29.0927 10.5412 29.6846 10.9781 30.1205L26.3548 45.4972C27.2648 46.4072 28.7348 46.4072 29.6448 45.4972L45.0215 30.1205C45.9315 29.2105 45.9315 27.7405 45.0215 26.8305C44.1115 25.9205 42.6415 25.9205 41.7315 26.8305L30.3448 38.2172L30.3448 12.1539C30.3448 10.8705 29.2948 9.82054 28.0115 9.82054C26.7281 9.82054 25.6781 10.8705 25.6781 12.1539Z" fill="white"/>
         </svg>
     </div>
+    <svg id="back" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="goTop()">
+        <path d="M25.6781 12.1539L25.6781 38.2172L14.2915 26.8305C13.3815 25.9205 11.8881 25.9205 10.9781 26.8305C10.5412 27.2665 10.2957 27.8583 10.2957 28.4755C10.2957 29.0927 10.5412 29.6846 10.9781 30.1205L26.3548 45.4972C27.2648 46.4072 28.7348 46.4072 29.6448 45.4972L45.0215 30.1205C45.9315 29.2105 45.9315 27.7405 45.0215 26.8305C44.1115 25.9205 42.6415 25.9205 41.7315 26.8305L30.3448 38.2172L30.3448 12.1539C30.3448 10.8705 29.2948 9.82054 28.0115 9.82054C26.7281 9.82054 25.6781 10.8705 25.6781 12.1539Z" fill="white"/>
+    </svg>
     <iframe id="desk" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fynh5llpNib98wpk8zVrKrD%2FTCC-CMS-S%25C3%25A3o-Paulo%3Fnode-id%3D32%253A32%26viewport%3D347%252C167%252C0.09995448589324951%26scaling%3Dscale-down&chrome=DOCUMENTATION" allowfullscreen></iframe>
     <iframe id="mobile" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fynh5llpNib98wpk8zVrKrD%2FTCC-CMS-S%25C3%25A3o-Paulo%3Fnode-id%3D197%253A7%26viewport%3D385%252C141%252C0.07020872831344604%26scaling%3Dmin-zoom&chrome=DOCUMENTATION" allowfullscreen></iframe>
 </body>
